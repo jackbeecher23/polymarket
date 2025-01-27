@@ -28,13 +28,13 @@ I have modified it to work with NBA games to show functionality.
 
 #### Running the code
 1. activate the virtual env
-'''bash
+```bash
 source env/bin/activate
-'''
+```
 2. run the main.py
-'''bash
+```bash
 python3 main.py
-'''
+```
 
 ## Journey
 I created this trading bot for two reasons
