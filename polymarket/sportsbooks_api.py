@@ -67,7 +67,7 @@ def create_average_odds_dict(ODDS_API_KEY):
         vig_adjusted_average_odds[home_team_no_city] = vig_adjusted_odds[0]
         vig_adjusted_average_odds[away_team_no_city] = vig_adjusted_odds[1]
 
-     return vig_adjusted_average_odds
+    return vig_adjusted_average_odds
 
 # remove the vig (security bookmakers put on their odds to always win)
 def vig_adjust(p1, p2):

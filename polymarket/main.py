@@ -3,7 +3,6 @@ from py_clob_client.constants import POLYGON
 from py_clob_client.client import ClobClient
 from py_clob_client.clob_types import MarketOrderArgs, OrderArgs, OrderType
 from py_clob_client.order_builder.constants import BUY
-import polymarket_api
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, date
 import requests
