@@ -20,7 +20,8 @@ Must have a The Odds API account and key as well as a polymarket account
 
 #### Installing
 1. Clone the repository
-2. Fill out the .env with your information
+2. Fill out the envtemplate with your information
+3. save template as .env
 
 #### Modifying the code
 This code was all written for NFL regular season games. Since that is over,

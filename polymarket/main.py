@@ -59,14 +59,12 @@ def get_weekly_team_tokens(host, next_cursor = ""):
 
             # pattern match to nba games
             pattern = r"nba\-\w+\-\w+\-\d+\-\d+\-\d+"
-            print(market_slug)
             if re.match(pattern, market_slug): 
 
                 # check event is in the future (this weekend)
                 date_list = market_slug.split("-")[-3:] #extracts date of nba game into 2024-12-3 format
                 event_date = "-".join(date_list)
                 if is_future_event(event_date):
-                    print(market_slug)
 
                     # add the teams' tokens to our dictionary
                     team1_name = market["tokens"][0]["outcome"]
