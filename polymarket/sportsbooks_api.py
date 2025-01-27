@@ -1,4 +1,5 @@
 import requests
+import os
 
 def print_remaining_usage():
     response = requests.get(f"{ODDS_API_URL}/v4/sports/?apiKey={ODDS_API_KEY}")
@@ -9,13 +10,13 @@ def get_request_nfl_games(ODDS_API_URL, ODDS_API_KEY, sport, regions, markets):
     nfl_games = response.json()
     return nfl_games
 
-def create_average_odds_dict():
-    ODDS_API_KEY = "5742e13978ad1d823a371525dc38e02c"
+def create_average_odds_dict(ODDS_API_KEY):
+    ODDS_API_KEY = ODDS_API_KEY 
     ODDS_API_URL = "https://api.the-odds-api.com"
 
     regions = "us"
     markets = "h2h"
-    sport = "americanfootball_nfl"
+    sport = "basketball_nba"
     vig_adjusted_average_odds = {}
     games = get_request_nfl_games(ODDS_API_URL, ODDS_API_KEY, sport, regions, markets)
     for game in games:
@@ -34,7 +35,6 @@ def create_average_odds_dict():
             markets = bookmaker.get("markets")
             for market in markets:
                 outcomes = market.get("outcomes")
-                #print(bookmaker.get("title"))
                 for outcome in outcomes:
                     team = outcome.get("name")
                     odds = outcome.get("price")
@@ -42,10 +42,10 @@ def create_average_odds_dict():
                         home_team_sum_odds += odds 
                     else:
                         away_team_sum_odds += odds 
-                    #print(f"{team}: {odds}")
 
         home_team_average_odds = home_team_sum_odds / bookmaker_count
         away_team_average_odds = away_team_sum_odds / bookmaker_count
+
 
         vig_adjusted_odds = vig_adjust(1/home_team_average_odds, 1/away_team_average_odds)
         vig_adjusted_average_odds[home_team_no_city] = vig_adjusted_odds[0]
