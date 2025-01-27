@@ -32,7 +32,8 @@ I have modified it to work with NBA games to show functionality.
 ```bash
 source env/bin/activate
 ```
-2. run the main.py
+2. uncomment line 113 in main.py (if want to place bets on polymarket)
+3. run the main.py
 ```bash
 python3 main.py
 ```
