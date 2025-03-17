@@ -49,8 +49,6 @@ pip install -r requirements.txt
 python3 polymarket/main.py
 ```
 
-Note: The code is currently configured to only get all future games on Tuesdays, so if you run the code for the first time on any other day, it will not be able to analyze any current games as there are none. To fix this, go to the line in main.py with the comment #tuesday, and change the number to whatever day you want.
-
 ## Journey
 I created this trading bot for two reasons
 1. I was fascinated by decision markets such as polymarket
