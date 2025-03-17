@@ -2,7 +2,7 @@
 Automated betting system for NBA games on polymarket using the kelly criterion
 and vig adjusted sports market odds.
 
-Simply, find favorable NBA bets on polymarket and place a optimal bet on them.
+Simply, find favorable NBA bets on polymarket and place an optimal bet on them.
 
 ## Description
 
