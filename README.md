@@ -44,10 +44,12 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 4. uncomment line 113 in main.py (if want to place bets on polymarket)
-5. run polymarket/main.py
+5. run polymarket/main.py (set this up to run daily)
 ```bash
 python3 polymarket/main.py
 ```
+
+Note: The code is currently configured to only get all future games on Tuesdays, so if you run the code for the first time on any other day, it will not be able to analyze any current games as there are none. To fix this, go to the line in main.py with the comment #tuesday, and change the number to whatever day you want.
 
 ## Journey
 I created this trading bot for two reasons
