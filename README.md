@@ -13,7 +13,10 @@ average, we should get a rough idea of what the true odds of the game are. We th
 odds and input them into polymarket to see if there are any favorable bets for us on that site.
 We place these bets optimally using the kelly criterion.
 
-## Getting started
+## Demo
+Below you will see intructions for setting up this code for your own use. However, for simplicity, here is a demo of how it works.
+
+## To Use
 
 #### Dependencies
 Must have a The Odds API account and key as well as a polymarket account
@@ -28,19 +31,27 @@ This code was all written for NFL regular season games. Since that is over,
 I have modified it to work with NBA games to show functionality.
 
 #### Running the code
-1. activate the virtual env
+1. create a virtual env
 ```bash
-source env/bin/activate
+python3 -m venv venv
 ```
-2. uncomment line 113 in main.py (if want to place bets on polymarket)
-3. run the main.py
+2. activate the virtual env
 ```bash
-python3 main.py
+source venv/bin/activate
+```
+3. install the requirements
+```bash
+pip install -r requirements.txt
+```
+4. uncomment line 113 in main.py (if want to place bets on polymarket)
+5. run polymarket/main.py
+```bash
+python3 polymarket/main.py
 ```
 
 ## Journey
 I created this trading bot for two reasons
-1. I was really fascinated by decision markets such as polymarket
+1. I was fascinated by decision markets such as polymarket
 2. I thought it would be a fun way to learn how to use APIs effectively
 
 #### Impact
