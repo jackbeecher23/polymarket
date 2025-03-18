@@ -72,11 +72,6 @@ Many, many, many.
 1. Polymarket is rather new and their API is not well developed, hard to fish out exact games I wanted to bet on
 2. Struggled finding sportsbook odds
 
-## No Demo
-Since this project was originally created for NFL regular season games, and it is now the post season, I am unable
-to create a video demo showcasing the functionality. However, I modified the code to work for NBA games and starting
-Jan 27, 2025, it should be fully functional again. Must wait til then, however, for polymarket to update games from the coming week.
-
 ## Author
 Jack Beecher - jackbee0221@gmail.com
 
