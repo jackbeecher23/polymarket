@@ -25,14 +25,10 @@ def main():
 
     today = datetime.now().weekday()
 
-    # every tuesday reset the team tokens and save them to file
-    if today == 1: #tuesday
-        weekly_team_polymarket_tokens = get_weekly_team_tokens(host, "")
-        with open("weekly_team_tokens", "w") as file:
-            json.dump(weekly_team_polymarket_tokens, file)
+    weekly_team_polymarket_tokens = get_weekly_team_tokens(host, "")
+    with open("weekly_team_tokens", "w") as file:
+        json.dump(weekly_team_polymarket_tokens, file)
     
-    with open("weekly_team_tokens", "r") as file:
-        weekly_team_polymarket_tokens = json.load(file)
 
 
     nba_team_sportsbook_odds = sportsbooks_api.create_average_odds_dict(odds_key)
@@ -60,10 +56,16 @@ def get_weekly_team_tokens(host, next_cursor = ""):
             pattern = r"nba\-\w+\-\w+\-\d+\-\d+\-\d+"
             if re.match(pattern, market_slug): 
 
-                # check event is in the future (this weekend)
                 date_list = market_slug.split("-")[-3:] #extracts date of nba game into 2024-12-3 format
                 event_date = "-".join(date_list)
-                if is_future_event(event_date):
+                date = r"\b\d{4}-\d{2}-\d{2}\b"
+
+                # check we extracted data
+                if not re.match(date, event_date):
+                    continue
+
+                # check if game is today
+                if is_today_event(event_date):
 
                     # add the teams' tokens to our dictionary
                     team1_name = market["tokens"][0]["outcome"]
@@ -78,11 +80,10 @@ def get_weekly_team_tokens(host, next_cursor = ""):
     return nba_team_token_id
 
 # check if event is in future 
-def is_future_event(start_date):
+def is_today_event(start_date):
     event_date = date.fromisoformat(start_date) 
     current_date = date.today()
-    print(f"{event_date} vs {current_date}")
-    return event_date > current_date 
+    return event_date == current_date 
 
 
 # place the bet through polymarket
@@ -104,19 +105,19 @@ def place_favorable_bets(client, weekly_team_tokens, all_sportsbook_odds, curren
         # find the team's odds on sportsbooks and polymarket
         team_sportsbook_odds = all_sportsbook_odds[team_name]
         polymarket_price = float(client.get_price(token_id = value, side = "SELL")["price"])
-        print(f"team name: {team_name}, sportsbooks odds: {team_sportsbook_odds}, polymarket price: {polymarket_price}")
 
         # if polymarket price better than sportsbook odds
         if is_favorable_bet(polymarket_price, team_sportsbook_odds):
-            print(f"team name: {team_name}, sportsbooks odds: {team_sportsbook_odds}, polymarket price: {polymarket_price}")
             f = calculate_kelly(polymarket_price, team_sportsbook_odds)
+            print(f"FAVORABLE BET: team name: {team_name}, sportsbooks odds: {team_sportsbook_odds:.3f}, polymarket price: {polymarket_price}")
+            print(f"KELLY CRITERION BET AMOUNT: Bet {f * 100:.3f}% of your bankroll")
             #place_favorable_bet(client, value, f, current_bankroll)
             current_bankroll -= current_bankroll * f
 
 
 # if polymarket price better than sportsbook odds
 def is_favorable_bet(polymarket_price, team_sportsbook_odds):
-    if (polymarket_price < team_sportsbook_odds):
+    if (polymarket_price + .01 < team_sportsbook_odds):
         return True
     return False
 
