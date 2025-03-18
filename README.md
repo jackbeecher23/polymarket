@@ -2,7 +2,7 @@
 Automated betting system for NBA games on polymarket using the kelly criterion
 and vig adjusted sports market odds.
 
-Simply, find favorable NBA bets on polymarket and place a optimal bet on them.
+Simply, find favorable NBA bets on polymarket and place an optimal bet on them.
 
 ## Description
 
@@ -13,7 +13,7 @@ average, we should get a rough idea of what the true odds of the game are. We th
 odds and input them into polymarket to see if there are any favorable bets for us on that site.
 We place these bets optimally using the kelly criterion.
 
-## Getting started
+## To Use
 
 #### Dependencies
 Must have a The Odds API account and key as well as a polymarket account
@@ -28,19 +28,34 @@ This code was all written for NFL regular season games. Since that is over,
 I have modified it to work with NBA games to show functionality.
 
 #### Running the code
-1. activate the virtual env
+1. create a virtual env
 ```bash
-source env/bin/activate
+python3 -m venv venv
 ```
-2. uncomment line 113 in main.py (if want to place bets on polymarket)
-3. run the main.py
+2. activate the virtual env
 ```bash
-python3 main.py
+source venv/bin/activate
 ```
+3. install the requirements
+```bash
+pip install -r requirements.txt
+```
+4. uncomment line 113 in main.py (if want to place bets on polymarket)
+5. run polymarket/main.py (set this up to run daily)
+```bash
+python3 polymarket/main.py
+```
+
+## Demo
+The code will print off something like:
+![Demo Result](polymarket-demo.png)
+(if there are any favorable bets today)
+
+Hopefully this output is easily decipherable and you now know what bets to place! If you have a PolyMarket account linked, it will automatically place these bets for you depending on what amount you set as your bankroll.
 
 ## Journey
 I created this trading bot for two reasons
-1. I was really fascinated by decision markets such as polymarket
+1. I was fascinated by decision markets such as polymarket
 2. I thought it would be a fun way to learn how to use APIs effectively
 
 #### Impact
@@ -56,11 +71,6 @@ Many, many, many.
 
 1. Polymarket is rather new and their API is not well developed, hard to fish out exact games I wanted to bet on
 2. Struggled finding sportsbook odds
-
-## No Demo
-Since this project was originally created for NFL regular season games, and it is now the post season, I am unable
-to create a video demo showcasing the functionality. However, I modified the code to work for NBA games and starting
-Jan 27, 2025, it should be fully functional again. Must wait til then, however, for polymarket to update games from the coming week.
 
 ## Author
 Jack Beecher - jackbee0221@gmail.com
