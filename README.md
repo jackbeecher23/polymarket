@@ -23,10 +23,6 @@ Must have a The Odds API account and key as well as a polymarket account
 2. Fill out the envtemplate with your information
 3. save template as .env
 
-#### Modifying the code
-This code was all written for NFL regular season games. Since that is over,
-I have modified it to work with NBA games to show functionality.
-
 #### Running the code
 1. create a virtual env
 ```bash
