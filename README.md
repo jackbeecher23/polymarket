@@ -49,6 +49,14 @@ pip install -r requirements.txt
 python3 polymarket/main.py
 ```
 
+## Demo
+This will print off something like:
+![Demo Result](polymarket-demo.png)
+
+(if there are any favorable bets today)
+
+Hopefully this output is easily decipherable and you now know what bets to place! If you have a PolyMarket account linked, it will automatically place these bets for you depending on what amount you set as your bankroll.
+
 ## Journey
 I created this trading bot for two reasons
 1. I was fascinated by decision markets such as polymarket
