@@ -13,9 +13,6 @@ average, we should get a rough idea of what the true odds of the game are. We th
 odds and input them into polymarket to see if there are any favorable bets for us on that site.
 We place these bets optimally using the kelly criterion.
 
-## Demo
-Below you will see intructions for setting up this code for your own use. However, for simplicity, here is a demo of how it works.
-
 ## To Use
 
 #### Dependencies
@@ -50,9 +47,8 @@ python3 polymarket/main.py
 ```
 
 ## Demo
-This will print off something like:
+The code will print off something like:
 ![Demo Result](polymarket-demo.png)
-
 (if there are any favorable bets today)
 
 Hopefully this output is easily decipherable and you now know what bets to place! If you have a PolyMarket account linked, it will automatically place these bets for you depending on what amount you set as your bankroll.
